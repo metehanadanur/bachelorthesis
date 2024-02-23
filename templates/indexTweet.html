@@ -1,0 +1,31 @@
+ <html>
+                <head>
+                <title>Tweet Fetcher</title>
+                <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+                </head>
+                <body>
+                    <h1>Fetch Tweets</h1>
+                    <p>Willkommen auf deiner Anwendungen für individualiserte Rezepte</p>
+                   <form action="/" method="post">
+                        <input type="text" name="username" placeholder="Twitter Benutzername" required class="userdata" />
+                        <input type="password" name="password" placeholder="Twitter Passwort" required class="userdata"/>
+                         <input type="text" name="username_to_scrape" placeholder="Username to Scrape" class="userdata">
+                        <input type="submit" value="Start Fetching Tweets" class="button" />
+                    </form>
+                    <br>
+                    <form action="/create-user-profile" method="post">
+                        <input type="number" name="height" placeholder="Größe in cm" required class="userdata" />
+                        <input type="number" name="weight" placeholder="Gewicht in Kg" required class="userdata" />
+                        <br>
+                        <textarea name="nutrition_goals" placeholder="Nährwertziele"></textarea>
+                        <textarea name="meal_preferences" placeholder="Ernährungspräferenzen"></textarea>
+                        <input type="submit" value="Creating User Profile JSON" class="button">
+                    </form>
+                    {% if file_exists %}
+                        <h2>Download Tweets</h2>
+                        <form action="/download-tweets">
+                            <input type="submit" value="Download Tweets JSON" class="button"  />
+                        </form>
+                    {% endif %}
+                </body>
+            </html>
