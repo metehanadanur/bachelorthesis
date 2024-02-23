@@ -44,13 +44,13 @@ def download_tweets():
 @app.route('/create-user-profile', methods=['GET', 'POST'])
 def create_user_profile():
     if request.method == 'POST':
-        # Daten aus dem Formular extrahieren
+
         height = request.form['height']
         weight = request.form['weight']
         nutrition_goals = request.form.get('nutrition_goals', '')
         meal_preferences = request.form.get('meal_preferences', '')
 
-        # Daten in ein Dictionary umwandeln
+
         user_profile = {
             "height": height,
             "weight": weight,
@@ -58,15 +58,15 @@ def create_user_profile():
             "meal_preferences": meal_preferences
         }
 
-        # Das Dictionary in einen JSON-String umwandeln
+
         user_profile_json = json.dumps(user_profile, indent=4)
 
-        # Eine Response erstellen, die die JSON-Daten als Download ausgibt
+
         response = Response(user_profile_json, mimetype='application/json')
         response.headers['Content-Disposition'] = 'attachment; filename=user_profile.json'
         return response
     else:
-        # Wenn die Methode GET ist, das Formular anzeigen
+
         return render_template('indexTweet.html')
 
 

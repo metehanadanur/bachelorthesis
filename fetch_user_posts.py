@@ -24,7 +24,7 @@ async def fetch_user_posts(url: str, cookies_file: str = 'twitter_cookies.json')
         last_height = await page.evaluate("() => document.body.scrollHeight")
         while True:
             await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-            await asyncio.sleep(2)  # Adjust sleep time as needed
+            await asyncio.sleep(2)
             new_height = await page.evaluate("() => document.body.scrollHeight")
             if new_height == last_height:
                 break
